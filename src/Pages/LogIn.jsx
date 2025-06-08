@@ -1,37 +1,79 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../Context/AuthContext';
 
 const LogIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = (e) => {
+    const { signInUser, setUser, signInGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleSignIn = (e) => {
         e.preventDefault();
-        // Handle login logic here
-        console.log('Email:', email);
-        console.log('Password:', password);
-    };
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signInUser(email, password)
+            .then(res => {
+                const user = res.user;
+                setUser(user)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Loged in Success!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate("/");
 
-    const handleGoogleLogin = () => {
-        // Placeholder for Google login logic
-        console.log('Login with Google');
-    };
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                console.log(errorCode);
+                console.log(error);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: errorCode,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            })
+    }
+    const handleGoogleLogIn = () => {
+        signInGoogle()
+            .then((result) => {
+                console.log("result", result);
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Loged in Successeful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate("/");
+
+
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                alert(errorCode);
+            })
+    }
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
-                <form className="space-y-4" onSubmit={handleLogin}>
+                <form className="space-y-4" onSubmit={handleSignIn}>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                             Email
                         </label>
                         <input
                             type="email"
-                            id="email"
+                            name="email"
                             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
@@ -42,10 +84,8 @@ const LogIn = () => {
                         </label>
                         <input
                             type="password"
-                            id="password"
+                            name="password"
                             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
@@ -60,7 +100,7 @@ const LogIn = () => {
 
                 <div className="flex items-center justify-center">
                     <button
-                        onClick={handleGoogleLogin}
+                        onClick={handleGoogleLogIn}
                         className="flex items-center gap-2 px-4 py-2 border rounded-md hover:bg-gray-100"
                     >
                         <FcGoogle size={20} /> Login with Google

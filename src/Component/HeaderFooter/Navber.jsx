@@ -76,7 +76,7 @@ const Navber = () => {
                             </ul>
                         </div>
                     ) : (
-                        <Link to="/signup" className="btn">Sign Up</Link>
+                        <Link to="/register" className="btn">Sign Up</Link>
                     )}
                 </div>
             </div>
