@@ -5,11 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const HeroSlider = ({ data }) => {
-    console.log(data);
+    // console.log(data);
 
     const settings = {
         infinite: true,
-        speed: 500,
+        speed: 700,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
@@ -39,7 +39,7 @@ const HeroSlider = ({ data }) => {
                             {/* Content layer */}
                             <div className="relative z-10  my-20 max-w-6xl mx-auto">
                                 {/* Green background title */}
-                                <h2 className="bg-amber-700 inline-block text-5xl text-white font-extrabold uppercase my-1 px-4 py-2">
+                                <h2 className="bg-[#9833CD] inline-block text-5xl text-white font-extrabold uppercase my-1 px-4 py-2">
                                     {hero.title}
                                 </h2>
                                 {/* Italic description */}
@@ -49,7 +49,7 @@ const HeroSlider = ({ data }) => {
                                 <Link
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block border-2 border-white text-white px-6 py-2 mt-2 hover:bg-amber-700 hover:text-white transition"
+                                    className="inline-block border-2 border-white text-white px-6 py-2 mt-2 hover:bg-[#9833CD] hover:text-white transition"
                                 >
                                     Learn More →
                                 </Link>
