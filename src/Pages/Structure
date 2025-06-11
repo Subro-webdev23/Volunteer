@@ -1,0 +1,42 @@
+src/
+│
+├── assets/                 # Images, icons, fonts, etc.
+├── components/             # Shared UI components (buttons, navbar, form inputs, etc.)
+│
+├── layouts/                # Layout components
+│   ├── ApplicantLayout.jsx
+│   └── RecruiterLayout.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Contact.jsx
+│
+│   ├── applicant/          # Applicant-specific pages
+│   │   ├── Dashboard.jsx
+│   │   ├── VolunteerList.jsx
+│   │   ├── VolunteerDetails.jsx
+│   │   ├── ApplicationForm.jsx
+│   │   └── MyApplications.jsx
+│
+│   └── recruiter/          # Recruiter-specific pages
+│       ├── Dashboard.jsx
+│       ├── AddPost.jsx
+│       ├── ManagePosts.jsx
+│       ├── ApplicantList.jsx
+│       └── ApplicantDetails.jsx
+│
+├── routes/                 # Route definitions (React Router)
+│   ├── ApplicantRoutes.jsx
+│   └── RecruiterRoutes.jsx
+│
+├── context/                # React contexts (Auth, User Role, etc.)
+│   ├── AuthContext.jsx
+│   └── RoleContext.jsx
+│
+├── hooks/                  # Custom React hooks
+│   └── useAuth.js
+│
+│
+├── App.jsx
+└── main.jsx

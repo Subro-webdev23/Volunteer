@@ -6,6 +6,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import LogIn from "../Pages/LogIn";
 import Register from "../Pages/Register";
 import Home from "../Pages/Home";
+import AddPost from "../Pages/Recruiter/AddPost";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +28,12 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addPost',
+                element: <PrivateRoute>
+                    <AddPost></AddPost>
+                </PrivateRoute>
             }
         ]
 

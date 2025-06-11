@@ -26,7 +26,7 @@ const Navber = () => {
         <Link className='mx-5' to='/'>Home</Link>
         <Link className='mx-5' to='/'>My Profile</Link>
         <Link className='mx-5' to='/logIn'>Log In</Link>
-        <Link className='mx-5' to='/register'>Register</Link>
+        <Link className='mx-5' to='/addPost'>Add volunteer need Post</Link>
     </>
     return (
         <div className=" sticky top-0 bg-[#ffffff40] z-10 backdrop-blur-2xl shadow-sm">
