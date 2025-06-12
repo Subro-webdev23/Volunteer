@@ -8,6 +8,8 @@ import Register from "../Pages/Register";
 import Home from "../Pages/Home";
 import AddPost from "../Pages/Recruiter/AddPost";
 import PrivateRoute from "./PrivateRoute";
+import PostDetails from "../Pages/PostDetails";
+import AllPost from "../Pages/AllPost";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +35,19 @@ export const router = createBrowserRouter([
                 path: '/addPost',
                 element: <PrivateRoute>
                     <AddPost></AddPost>
+                </PrivateRoute>
+            },
+            {
+                path: '/postDetails/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/allPost/${params.id}`),
+                element: <PrivateRoute>
+                    <PostDetails></PostDetails>
+                </PrivateRoute>
+            },
+            {
+                path: '/allPost',
+                element: <PrivateRoute>
+                    <AllPost></AllPost>
                 </PrivateRoute>
             }
         ]

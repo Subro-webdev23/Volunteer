@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const VolunteerCard = ({ data }) => {
-    const { thumbnail, title, category, deadline } = data;
+    const { _id, thumbnail, title, category, deadline } = data;
     const formattedDeadline = new Date(deadline).toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'short',
@@ -15,12 +16,12 @@ const VolunteerCard = ({ data }) => {
                     {category}
                 </span>
                 <h3 className="mt-2 text-lg font-semibold text-gray-800">{title}</h3>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 my-3">
                     Deadline: <span className="font-medium">{formattedDeadline}</span>
                 </p>
-                <button className="mt-4 w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition">
+                <Link to={`/postDetails/${_id}`} className="mt-4 w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition">
                     View Details
-                </button>
+                </Link>
             </div>
         </div>
     );

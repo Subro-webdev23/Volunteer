@@ -11,7 +11,7 @@ const Volunteer = () => {
                 setVolunteers(data)
                 setLoading(false)
             })
-    })
+    }, [])
     if (loading) {
         return (
             <div className='flex justify-center items-center'>
@@ -22,11 +22,11 @@ const Volunteer = () => {
     return (
         <div className='grid grid-cols-3 gap-5'>
             {
-                volunteers.map(volunteer => (
-                    <div >
+                volunteers.map((volunteer, index) => (
 
-                        <VolunteerCard data={volunteer}></VolunteerCard>
-                    </div>
+
+                    <VolunteerCard key={index} data={volunteer}></VolunteerCard>
+
                 ))
             }
         </div>
