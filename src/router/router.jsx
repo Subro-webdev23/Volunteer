@@ -10,6 +10,7 @@ import AddPost from "../Pages/Recruiter/AddPost";
 import PrivateRoute from "./PrivateRoute";
 import PostDetails from "../Pages/PostDetails";
 import AllPost from "../Pages/AllPost";
+import ManagePost from "../Pages/ManagePost";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,12 @@ export const router = createBrowserRouter([
                 path: '/allPost',
                 element: <PrivateRoute>
                     <AllPost></AllPost>
+                </PrivateRoute>
+            },
+            {
+                path: '/managePost',
+                element: <PrivateRoute>
+                    <ManagePost></ManagePost>
                 </PrivateRoute>
             }
         ]

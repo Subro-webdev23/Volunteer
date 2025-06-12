@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import logo from './../../assets/logo.svg'
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -24,10 +25,26 @@ const Navber = () => {
     }
     const links = <>
         <Link className='mx-5' to='/'>Home</Link>
-        <Link className='mx-5' to='/'>My Profile</Link>
-        <Link className='mx-5' to='/allPost'>All volunteer need posts</Link>
-        <Link className='mx-5' to='/addPost'>Add volunteer need Post</Link>
-        <Link className='mx-5' to='/addPost'>Manage Post</Link>
+        <Link className='mx-5' to='/addPost'>Add Post</Link>
+
+        {/* My Profile dropdown on click */}
+        <div className="dropdown dropdown-hover group">
+            <label tabIndex={0} className="mx-5 flex items-center cursor-pointer">
+                My Profile
+                <RiArrowDropDownLine
+                    size={25}
+                    className="transition-transform duration-300 group-hover:rotate-180"
+                />
+            </label>
+
+            <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-56 mt-4 z-10"
+            >
+                <li><Link to='/allPost'>All Volunteer Need Posts</Link></li>
+                <li><Link to='/addPost'>Manage Posts</Link></li>
+            </ul>
+        </div>
     </>
     return (
         <div className=" sticky top-0 bg-[#ffffff40] z-10 backdrop-blur-2xl shadow-sm">
