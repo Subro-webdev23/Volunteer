@@ -42,7 +42,7 @@ const Navber = () => {
                 className="dropdown-content menu p-2 shadow bg-base-300 rounded-box w-56 mt-4 z-10"
             >
                 <li><Link to='/allPost'>All Volunteer Need Posts</Link></li>
-                <li><Link to='/addPost'>Manage Posts</Link></li>
+                <li><Link to='/managePost'>My Posts</Link></li>
             </ul>
         </div>
     </>

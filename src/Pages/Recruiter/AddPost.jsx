@@ -123,9 +123,10 @@ const AddPost = () => {
                     <label className="block font-semibold">Organizer Name</label>
                     <input
                         type="text"
+                        name='name'
                         readOnly
                         defaultValue={user.displayName}
-                        className="w-full p-2 border bg-gray-100 rounded"
+                        className="w-full cursor-not-allowed p-2 border bg-gray-100 rounded"
                     />
                 </div>
 
@@ -134,9 +135,10 @@ const AddPost = () => {
                     <label className="block font-semibold">Organizer Email</label>
                     <input
                         type="email"
+                        name='email'
                         readOnly
                         defaultValue={user.email}
-                        className="w-full p-2 border bg-gray-100 rounded"
+                        className="w-full p-2 border cursor-not-allowed bg-gray-100 rounded"
                     />
                 </div>
 
