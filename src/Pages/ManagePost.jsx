@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../hook/useAuth';
 import VolunteerCard from '../Component/HomeComponent/VolunteerCard';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ManagePost = () => {
     const [myPost, setMyPost] = useState([]);
@@ -24,6 +26,36 @@ const ManagePost = () => {
     })
     const handleUpdate = (id) => {
         navigate(`/update/${id}`)
+
+    }
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            console.log(result.isConfirmed)
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/update/${id}`)
+                    .then(data => {
+                        if (data.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Tip has been deleted.",
+                                icon: "success"
+                            });
+
+                            // remove the Tips from the state
+                            const remainingPost = myPost.filter(singlePost => singlePost._id !== id);
+                            setMyPost(remainingPost);
+                        }
+                    })
+            }
+        })
 
     }
 
