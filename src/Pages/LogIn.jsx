@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const LogIn = () => {
     const { signInUser, setUser, signInGoogle } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const LogIn = () => {
     }
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <Helmet>
+                <title>Log in</title>
+            </Helmet>
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
                 <form className="space-y-4" onSubmit={handleSignIn}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VolunteerCard from '../Component/HomeComponent/VolunteerCard';
+import { Helmet } from 'react-helmet';
 
 const AllPost = () => {
     const [loading, setLoading] = useState(true);
@@ -28,6 +29,9 @@ const AllPost = () => {
 
     return (
         <div className='max-w-6xl mx-auto'>
+            <Helmet>
+                <title>All Post</title>
+            </Helmet>
             <div className='py-5'>
                 <div className='flex justify-between items-center'>
                     <h2 className='text-4xl font-bold my-5'>All volunteer need posts</h2>

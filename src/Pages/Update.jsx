@@ -4,6 +4,7 @@ import useAuth from '../hook/useAuth';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const Update = () => {
     const post = useLoaderData();
@@ -33,6 +34,9 @@ const Update = () => {
 
     return (
         <div className="max-w-xl mx-auto p-6 shadow-xl bg-white rounded-2xl">
+            <Helmet>
+                <title>Update</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-4">Add Volunteer Need Post</h2>
             <form onSubmit={handleUpdate} className="space-y-4">
                 {/* Thumbnail */}

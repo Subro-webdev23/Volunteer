@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const [error, setError] = useState("");
@@ -100,6 +101,9 @@ const Register = () => {
     }
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800">Register</h2>
                 <form className="space-y-4" onSubmit={handleRegister}>

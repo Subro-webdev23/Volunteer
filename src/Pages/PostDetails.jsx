@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router';
 import useAuth from '../hook/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const PostDetails = () => {
     const postData = useLoaderData();
@@ -50,6 +51,9 @@ const PostDetails = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-lg">
+            <Helmet>
+                <title>Details</title>
+            </Helmet>
             <img
                 src={postData.thumbnail}
                 alt={postData.title}

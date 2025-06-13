@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import { AuthContext } from '../../Context/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const AddPost = () => {
     const { user } = useContext(AuthContext)
@@ -35,6 +36,9 @@ const AddPost = () => {
     };
     return (
         <div className="max-w-xl mx-auto p-6 shadow-xl bg-white rounded-2xl">
+            <Helmet>
+                <title>Add Post</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-4">Add Volunteer Need Post</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Thumbnail */}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HeroSlider from '../Component/HomeComponent/HeroSlider';
 import Volunteer from '../Component/HomeComponent/Volunteer';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
@@ -22,6 +23,9 @@ const Home = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             {/* Slider */}
             <HeroSlider data={heroData} />
             {/* Volunteer Needs Now Section */}

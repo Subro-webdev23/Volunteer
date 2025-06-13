@@ -4,6 +4,7 @@ import VolunteerCard from '../Component/HomeComponent/VolunteerCard';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const ManagePost = () => {
     const [myPost, setMyPost] = useState([]);
@@ -91,6 +92,9 @@ const ManagePost = () => {
 
     return (
         <div className='max-w-6xl mx-auto'>
+            <Helmet>
+                <title>Manage Post</title>
+            </Helmet>
             <div className='py-5'>
                 <div className='mb-20'>
                     <h2 className='text-4xl font-bold mb-5'>My Volunteer Need Post</h2>
