@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import PostDetails from "../Pages/PostDetails";
 import AllPost from "../Pages/AllPost";
 import ManagePost from "../Pages/ManagePost";
+import Update from "../Pages/Update";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,13 @@ export const router = createBrowserRouter([
                 path: '/managePost',
                 element: <PrivateRoute>
                     <ManagePost></ManagePost>
+                </PrivateRoute>
+            },
+            {
+                path: '/update/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/allPost/${params.id}`),
+                element: <PrivateRoute>
+                    <Update></Update>
                 </PrivateRoute>
             }
         ]

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../hook/useAuth';
 import VolunteerCard from '../Component/HomeComponent/VolunteerCard';
+import { useNavigate } from 'react-router';
 
 const ManagePost = () => {
     const [myPost, setMyPost] = useState([]);
     const [myRequest, setMyRequest] = useState([]);
     const { user } = useAuth();
+    const navigate = useNavigate();
     useEffect(() => {
         fetch(`http://localhost:3000/myPost/${user.email}`)
             .then(res => res.json())
@@ -20,6 +22,10 @@ const ManagePost = () => {
                 setMyRequest(data)
             })
     })
+    const handleUpdate = (id) => {
+        navigate(`/update/${id}`)
+
+    }
 
 
     return (
