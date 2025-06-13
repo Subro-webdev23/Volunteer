@@ -58,6 +58,35 @@ const ManagePost = () => {
         })
 
     }
+    const handleCancel = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Cancel it!"
+        }).then((result) => {
+            console.log(result.isConfirmed)
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:3000/requests/${id}`)
+                    .then(data => {
+                        if (data.data.deletedCount) {
+                            Swal.fire({
+                                title: "Canceled!",
+                                text: "Your Tip has been Canceled.",
+                                icon: "success"
+                            });
+
+                            // remove the Tips from the state
+                            const remainingRequest = myRequest.filter(singleRequest => singleRequest._id !== id);
+                            setMyPost(remainingRequest);
+                        }
+                    })
+            }
+        })
+    }
 
 
     return (
