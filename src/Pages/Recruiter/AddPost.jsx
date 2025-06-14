@@ -35,7 +35,7 @@ const AddPost = () => {
 
     };
     return (
-        <div className="max-w-xl mx-auto p-6 shadow-xl bg-white rounded-2xl">
+        <div className="max-w-xl mx-auto p-6 shadow-2xl rounded-2xl">
             <Helmet>
                 <title>Add Post</title>
             </Helmet>
@@ -130,7 +130,7 @@ const AddPost = () => {
                         name='name'
                         readOnly
                         defaultValue={user.displayName}
-                        className="w-full cursor-not-allowed p-2 border bg-gray-100 rounded"
+                        className="w-full cursor-not-allowed p-2 border rounded"
                     />
                 </div>
 
@@ -142,7 +142,7 @@ const AddPost = () => {
                         name='email'
                         readOnly
                         defaultValue={user.email}
-                        className="w-full p-2 border cursor-not-allowed bg-gray-100 rounded"
+                        className="w-full p-2 border cursor-not-allowed rounded"
                     />
                 </div>
 

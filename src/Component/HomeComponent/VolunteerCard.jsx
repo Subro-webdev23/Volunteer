@@ -9,13 +9,13 @@ const VolunteerCard = ({ data }) => {
         year: 'numeric',
     });
     return (
-        <div className="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition duration-300 max-w-sm">
+        <div className="rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition duration-300 max-w-sm">
             <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
             <div className="p-4">
                 <span className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-wide">
                     {category}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold text-gray-800">{title}</h3>
+                <h3 className="mt-2 text-lg font-semibold ">{title}</h3>
                 <p className="text-sm text-gray-500 my-3">
                     Deadline: <span className="font-medium">{formattedDeadline}</span>
                 </p>

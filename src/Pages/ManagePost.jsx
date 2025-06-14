@@ -101,7 +101,7 @@ const ManagePost = () => {
                     {
                         myPost.length === 0 ? <p className='text-2xl font-medium text-center'>No Post added Yet</p> : <table className="w-full table-auto border-collapse border border-gray-300">
                             <thead>
-                                <tr className="bg-gray-100">
+                                <tr >
                                     <th className="border border-gray-300 px-4 py-2">Thumbnail</th>
                                     <th className="border border-gray-300 px-4 py-2">Title</th>
                                     <th className="border border-gray-300 px-4 py-2">Location</th>
@@ -149,7 +149,7 @@ const ManagePost = () => {
                             <p className='text-2xl font-medium text-center'>You have Request yet!</p>
                         ) : (
                             <table className="w-full border border-gray-300 table-auto">
-                                <thead className="bg-gray-100">
+                                <thead>
                                     <tr>
                                         <th className="border px-4 py-2">Thumbnail</th>
                                         <th className="border px-4 py-2">Title</th>
