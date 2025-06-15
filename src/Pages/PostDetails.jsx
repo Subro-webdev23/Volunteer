@@ -14,7 +14,7 @@ const PostDetails = () => {
             .then(data => {
                 setPostData(data)
             })
-    })
+    }, [id])
     // const [need, setNeed] = useState()
     // console.log("iiii", id);
     // const postData = useLoaderData();
@@ -30,11 +30,14 @@ const PostDetails = () => {
         const form = e.target;
         const formData = new FormData(form);
 
-        const requestData = Object.fromEntries(formData.entries());
+        let requestData = Object.fromEntries(formData.entries());
+        requestData.status = "requested";
 
-        axios.post('http://localhost:3000/volunteerRequests', requestData)
+        axios.post('http://localhost:3000/volunteerReq', requestData, {
+            withCredentials: true
+        })
             .then(response => {
-                console.log('Request successfully', response.data);
+                // console.log('Request successfully', response.data);
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -43,9 +46,17 @@ const PostDetails = () => {
                     timer: 1500
                 });
 
-                axios.put(`http://localhost:3000/recruiterPost/${id}`)
+                axios.put(`http://localhost:3000/recruiterPost/update/${id}`, {}, {
+                    withCredentials: true
+                })
                     .then(updateRes => {
                         console.log('Volunteers count updated:', updateRes.data);
+
+                        fetch(`http://localhost:3000/allPost/${id}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                setPostData(data)
+                            })
 
 
                     })

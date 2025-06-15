@@ -17,14 +17,14 @@ const ManagePost = () => {
             .then(data => {
                 setMyPost(data)
             })
-    })
+    }, [user.email])
     useEffect(() => {
         fetch(`http://localhost:3000/myRequest/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyRequest(data)
             })
-    })
+    }, [user.email])
     const handleUpdate = (id) => {
         navigate(`/update/${id}`)
 
@@ -41,7 +41,7 @@ const ManagePost = () => {
         }).then((result) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/update/${id}`)
+                axios.delete(`http://localhost:3000/deleteData/${id}`, { withCredentials: true })
                     .then(data => {
                         if (data.data.deletedCount) {
                             Swal.fire({
@@ -49,10 +49,11 @@ const ManagePost = () => {
                                 text: "Your Tip has been deleted.",
                                 icon: "success"
                             });
-
-                            // remove the Tips from the state
-                            const remainingPost = myPost.filter(singlePost => singlePost._id !== id);
-                            setMyPost(remainingPost);
+                            fetch(`http://localhost:3000/myPost/${user.email}`)
+                                .then(res => res.json())
+                                .then(data => {
+                                    setMyPost(data)
+                                })
                         }
                     })
             }
@@ -71,7 +72,7 @@ const ManagePost = () => {
         }).then((result) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/requests/${id}`)
+                axios.delete(`http://localhost:3000/cancel/${id}`, { withCredentials: true })
                     .then(data => {
                         if (data.data.deletedCount) {
                             Swal.fire({
@@ -79,10 +80,11 @@ const ManagePost = () => {
                                 text: "Your Tip has been Canceled.",
                                 icon: "success"
                             });
-
-                            // remove the Tips from the state
-                            const remainingRequest = myRequest.filter(singleRequest => singleRequest._id !== id);
-                            setMyPost(remainingRequest);
+                            fetch(`http://localhost:3000/myRequest/${user.email}`)
+                                .then(res => res.json())
+                                .then(data => {
+                                    setMyRequest(data)
+                                })
                         }
                     })
             }

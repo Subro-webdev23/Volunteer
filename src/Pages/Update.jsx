@@ -18,7 +18,9 @@ const Update = () => {
         const formData = new FormData(form);
 
         const updateData = Object.fromEntries(formData.entries());
-        axios.put(`http://localhost:3000/update/${post._id}`, updateData)
+        axios.put(`http://localhost:3000/update/${post._id}`, updateData, {
+            withCredentials: true
+        })
             .then(data => {
                 Swal.fire({
                     position: "top-end",

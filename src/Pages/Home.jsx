@@ -26,7 +26,7 @@ const Home = () => {
                 setUpCommingPost(data)
                 setLoading(false)
             })
-    })
+    }, [])
 
 
     useEffect(() => {
