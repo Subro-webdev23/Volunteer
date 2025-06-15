@@ -1,15 +1,29 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import useAuth from '../hook/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 
 const PostDetails = () => {
-    const postData = useLoaderData();
+    const [postData, setPostData] = useState([])
+    const { id } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:3000/allPost/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setPostData(data)
+            })
+    })
+    // const [need, setNeed] = useState()
+    // console.log("iiii", id);
+    // const postData = useLoaderData();
+    //  loader: ({ params }) => `),
+
+
     // console.log(postData);
     const { user } = useAuth();
-    // console.log('need', need);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,28 +31,24 @@ const PostDetails = () => {
         const formData = new FormData(form);
 
         const requestData = Object.fromEntries(formData.entries());
-        requestData.volunteersNeeded = Number(requestData.volunteersNeeded);
-        console.log("volunteersNeeded is", typeof requestData.volunteersNeeded, requestData.volunteersNeeded);
 
-        // console.log(postData);
         axios.post('http://localhost:3000/volunteerRequests', requestData)
             .then(response => {
-                // console.log('post successfully', response.data);
-                if (response.data.acknowledged) {
-                    axios.put(`http://localhost:3000/recruiterPost/${postData._id}`)
-                        .then(updateRes => {
-                            console.log('Volunteers count updated:', updateRes.data);
+                console.log('Request successfully', response.data);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Request Success!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
 
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Request Success!",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        })
-                }
+                axios.put(`http://localhost:3000/recruiterPost/${id}`)
+                    .then(updateRes => {
+                        console.log('Volunteers count updated:', updateRes.data);
 
+
+                    })
 
                 document.getElementById("my_modal_5").close();
                 form.reset();
@@ -50,7 +60,7 @@ const PostDetails = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-lg">
+        <div className="max-w-4xl mx-auto p-6 mt-10 rounded-2xl shadow-lg">
             <Helmet>
                 <title>Details</title>
             </Helmet>
@@ -64,12 +74,12 @@ const PostDetails = () => {
                 {postData.title}
             </h1>
 
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-500 text-sm mb-4">
                 <span className="font-semibold">Category:</span> {postData.category} |{" "}
                 <span className="font-semibold">Location:</span> {postData.location}
             </p>
 
-            <p className="text-gray-800 mb-6 leading-relaxed whitespace-pre-line">
+            <p className="text-gray-500 mb-6 leading-relaxed whitespace-pre-line">
                 {postData.description}
             </p>
 
@@ -91,13 +101,20 @@ const PostDetails = () => {
 
             {/* ✅ Be a Volunteer Button */}
             <div className="mt-10 text-center">
-                <button onClick={() => document.getElementById('my_modal_5').showModal()} className="bg-indigo-600 hover:bg-indigo-700 cursor-pointer text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md">
-                    Be a Volunteer
+                <button onClick={() => document.getElementById('my_modal_5').showModal()} className={`py-3 px-6 rounded-lg transition duration-300 shadow-md font-semibold ${postData.volunteersNeeded === 0
+                    ? 'bg-gray-400 cursor-not-allowed text-white'
+                    : 'bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer'
+                    }`} disabled={postData.volunteersNeeded === 0}>
+                    {postData.volunteersNeeded === 0 ? 'Volunteer Limit Reached' : 'Be a Volunteer'}
                 </button>
 
                 {/* Modal with Form */}
                 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
                         <h3 className="font-bold text-xl mb-4">Volunteer Request Form</h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {/* Post Info (read-only) */}
@@ -182,17 +199,15 @@ const PostDetails = () => {
                             /> */}
 
                             {/* Buttons */}
-                            <div className="modal-action">
-                                <button type="submit" className="btn btn-primary">
-                                    Request
-                                </button>
-                                <div method="dialog">
-                                    {/* if there is a button in form, it will close the modal */}
-                                    <button className="btn">Close</button>
-                                </div>
-                            </div>
+                            <button className="w-full py-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700" type='submit'>Request</button>
 
                         </form>
+                        <div className="modal-action">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn">Close</button>
+                            </form>
+                        </div>
                     </div>
                 </dialog>
             </div>

@@ -41,16 +41,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/postDetails/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/allPost/${params.id}`),
                 element: <PrivateRoute>
                     <PostDetails></PostDetails>
                 </PrivateRoute>
             },
             {
                 path: '/allPost',
-                element: <PrivateRoute>
-                    <AllPost></AllPost>
-                </PrivateRoute>
+                element: <AllPost></AllPost>
             },
             {
                 path: '/managePost',

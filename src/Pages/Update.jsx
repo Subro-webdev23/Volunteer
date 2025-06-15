@@ -33,7 +33,7 @@ const Update = () => {
     }
 
     return (
-        <div className="max-w-xl mx-auto p-6 shadow-xl bg-white rounded-2xl">
+        <div className="max-w-xl mx-auto p-6 shadow-xl rounded-2xl">
             <Helmet>
                 <title>Update</title>
             </Helmet>
@@ -83,11 +83,11 @@ const Update = () => {
                         required
                         className="w-full p-2 border rounded"
                     >
-                        <option value="">-- Select Category --</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="education">Education</option>
-                        <option value="social service">Social Service</option>
-                        <option value="animal welfare">Animal Welfare</option>
+                        <option className='text-gray-500' value="">-- Select Category --</option>
+                        <option className='text-gray-500' value="healthcare">Healthcare</option>
+                        <option className='text-gray-500' value="education">Education</option>
+                        <option className='text-gray-500' value="social service">Social Service</option>
+                        <option className='text-gray-500' value="animal welfare">Animal Welfare</option>
                     </select>
                 </div>
 
@@ -134,7 +134,7 @@ const Update = () => {
                         name='name'
                         readOnly
                         defaultValue={user.displayName}
-                        className="w-full cursor-not-allowed p-2 border bg-gray-100 rounded"
+                        className="w-full cursor-not-allowed p-2 border rounded"
                     />
                 </div>
 
@@ -146,7 +146,7 @@ const Update = () => {
                         name='email'
                         readOnly
                         defaultValue={user.email}
-                        className="w-full p-2 border cursor-not-allowed bg-gray-100 rounded"
+                        className="w-full p-2 border cursor-not-allowed rounded"
                     />
                 </div>
 
@@ -155,7 +155,7 @@ const Update = () => {
                     type="submit"
                     className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
                 >
-                    Add Post
+                    Update Post
                 </button>
             </form>
         </div>

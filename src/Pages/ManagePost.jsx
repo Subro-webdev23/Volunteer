@@ -154,7 +154,7 @@ const ManagePost = () => {
                                         <th className="border px-4 py-2">Thumbnail</th>
                                         <th className="border px-4 py-2">Title</th>
                                         <th className="border px-4 py-2">Location</th>
-                                        <th className="border px-4 py-2">Volunteers Needed</th>
+                                        <th className="border px-4 py-2">Category </th>
                                         <th className="border px-4 py-2">Action</th>
                                     </tr>
                                 </thead>
@@ -170,7 +170,7 @@ const ManagePost = () => {
                                             </td>
                                             <td className="border px-4 py-2">{post.title}</td>
                                             <td className="border px-4 py-2">{post.location}</td>
-                                            <td className="border px-4 py-2">{post.volunteersNeeded}</td>
+                                            <td className="border px-4 py-2">{post.category}</td>
                                             <td className="border px-4 py-2">
                                                 <button
                                                     onClick={() => handleCancel(post._id)}

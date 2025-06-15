@@ -15,6 +15,7 @@ const AddPost = () => {
         const formData = new FormData(form);
 
         const postData = Object.fromEntries(formData.entries());
+        postData.volunteersNeeded = Number(postData.volunteersNeeded)
         // console.log(postData);
         axios.post('http://localhost:3000/recruiterPost', postData)
             .then(response => {
@@ -81,11 +82,11 @@ const AddPost = () => {
                         required
                         className="w-full p-2 border rounded"
                     >
-                        <option value="">-- Select Category --</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="education">Education</option>
-                        <option value="social service">Social Service</option>
-                        <option value="animal welfare">Animal Welfare</option>
+                        <option className='text-gray-500' value="">-- Select Category --</option>
+                        <option className='text-gray-500' value="healthcare">Healthcare</option>
+                        <option className='text-gray-500' value="education">Education</option>
+                        <option className='text-gray-500' value="social service">Social Service</option>
+                        <option className='text-gray-500' value="animal welfare">Animal Welfare</option>
                     </select>
                 </div>
 
