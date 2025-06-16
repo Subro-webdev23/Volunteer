@@ -14,21 +14,23 @@ const ManagePost = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
     useEffect(() => {
-        fetch(`http://localhost:3000/myPost/${user.email}`, { credentials: 'include' })
+        fetch(`https://assignment-11-server-nu-sage.vercel.app/myPost/${user.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setMyPost(data)
             })
     }, [user.email])
     useEffect(() => {
-        fetch(`http://localhost:3000/myRequest/${user.email}`, { credentials: 'include' })
+        fetch(`https://assignment-11-server-nu-sage.vercel.app/myRequest/${user.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setMyRequest(data)
             })
     }, [user.email])
     const handleUpdate = (id) => {
-        navigate(`/update/${id}`)
+        navigate(`/update/${user.email}/${id}`)
+        console.log(id);
+
 
     }
     const handleDelete = (id) => {
@@ -43,7 +45,7 @@ const ManagePost = () => {
         }).then((result) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/deleteData/${id}`, { withCredentials: true })
+                axios.delete(`https://assignment-11-server-nu-sage.vercel.app/deleteData/${id}`, { withCredentials: true })
                     .then(data => {
                         if (data.data.deletedCount) {
                             Swal.fire({
@@ -51,7 +53,7 @@ const ManagePost = () => {
                                 text: "Your Tip has been deleted.",
                                 icon: "success"
                             });
-                            fetch(`http://localhost:3000/myPost/${user.email}`, { credentials: 'include' })
+                            fetch(`https://assignment-11-server-nu-sage.vercel.app/myPost/${user.email}`, { credentials: 'include' })
                                 .then(res => res.json())
                                 .then(data => {
                                     setMyPost(data)
@@ -74,7 +76,7 @@ const ManagePost = () => {
         }).then((result) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/cancel/${id}`, { withCredentials: true })
+                axios.delete(`https://assignment-11-server-nu-sage.vercel.app/cancel/${id}`, { withCredentials: true })
                     .then(data => {
                         if (data.data.deletedCount) {
                             Swal.fire({
@@ -82,7 +84,7 @@ const ManagePost = () => {
                                 text: "Your Tip has been Canceled.",
                                 icon: "success"
                             });
-                            fetch(`http://localhost:3000/myRequest/${user.email}`, { credentials: 'include' })
+                            fetch(`https://assignment-11-server-nu-sage.vercel.app/myRequest/${user.email}`, { credentials: 'include' })
                                 .then(res => res.json())
                                 .then(data => {
                                     setMyRequest(data)

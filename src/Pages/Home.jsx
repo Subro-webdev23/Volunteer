@@ -13,7 +13,7 @@ const Home = () => {
     const [upCommingPost, setUpCommingPost] = useState([])
     const [volunteerOfMonth, setVolunteerOfMonth] = useState(null);
     useEffect(() => {
-        fetch("http://localhost:3000/hero")
+        fetch("https://assignment-11-server-nu-sage.vercel.app/hero")
             .then(res => res.json())
             .then(data => {
                 setHeroData(data)
@@ -21,7 +21,7 @@ const Home = () => {
             })
     }, [])
     useEffect(() => {
-        fetch("http://localhost:3000/upcomingPost")
+        fetch("https://assignment-11-server-nu-sage.vercel.app/upcomingPost")
             .then(res => res.json())
             .then(data => {
                 setUpCommingPost(data)
@@ -31,7 +31,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:3000/volunteerOfTheMonth")
+        fetch("https://assignment-11-server-nu-sage.vercel.app/volunteerOfTheMonth")
             .then(res => res.json())
             .then(data => {
                 setVolunteerOfMonth(data)

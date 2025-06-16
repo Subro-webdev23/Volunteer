@@ -5,7 +5,7 @@ const Volunteer = () => {
     const [loading, setLoading] = useState(true);
     const [volunteers, setVolunteers] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/allPost')
+        fetch('https://assignment-11-server-nu-sage.vercel.app/allPost')
             .then(res => res.json())
             .then(data => {
                 setVolunteers(data)

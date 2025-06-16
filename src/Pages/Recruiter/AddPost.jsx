@@ -19,7 +19,7 @@ const AddPost = () => {
         const postData = Object.fromEntries(formData.entries());
         postData.volunteersNeeded = Number(postData.volunteersNeeded)
         // console.log(postData);
-        axios.post('http://localhost:3000/recruiterPost', postData)
+        axios.post('https://assignment-11-server-nu-sage.vercel.app/addPost', postData, { withCredentials: true })
             .then(response => {
                 // console.log('post successfully', response.data);
                 Swal.fire({

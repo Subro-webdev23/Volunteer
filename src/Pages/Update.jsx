@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import useAuth from '../hook/useAuth';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
@@ -7,10 +7,22 @@ import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
 
 const Update = () => {
-    const post = useLoaderData();
+    const { id } = useParams();
+    console.log(id);
+
+    const [post, setPost] = useState([]);
     const { user } = useAuth();
     const navigate = useNavigate();
     const [selectedDate, setSelectedDate] = useState(new Date());
+    useEffect(() => {
+        fetch(`https://assignment-11-server-nu-sage.vercel.app/myPost/${user.email}/${id}`, { credentials: 'include' })
+            .then(res => res.json())
+            .then(data => {
+                setPost(data)
+            })
+    }, [user.email, id])
+    console.log(post);
+
     // console.log("Update Post", post);
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -18,9 +30,7 @@ const Update = () => {
         const formData = new FormData(form);
 
         const updateData = Object.fromEntries(formData.entries());
-        axios.put(`http://localhost:3000/update/${post._id}`, updateData, {
-            withCredentials: true
-        })
+        axios.put(`https://assignment-11-server-nu-sage.vercel.app/update/${id}`, updateData, { withCredentials: true })
             .then(data => {
                 Swal.fire({
                     position: "top-end",
@@ -79,18 +89,20 @@ const Update = () => {
                 {/* Category */}
                 <div>
                     <label className="block font-semibold">Category</label>
-                    <select
-                        name="category"
-                        defaultValue={post.category}
-                        required
-                        className="w-full p-2 border rounded"
-                    >
-                        <option className='text-gray-500' value="">-- Select Category --</option>
-                        <option className='text-gray-500' value="healthcare">Healthcare</option>
-                        <option className='text-gray-500' value="education">Education</option>
-                        <option className='text-gray-500' value="social service">Social Service</option>
-                        <option className='text-gray-500' value="animal welfare">Animal Welfare</option>
-                    </select>
+                    {post.category && (
+                        <select
+                            name="category"
+                            defaultValue={post.category}
+                            required
+                            className="w-full p-2 border rounded"
+                        >
+                            <option className='text-gray-500' value="">-- Select Category --</option>
+                            <option className='text-gray-500' value="healthcare">Healthcare</option>
+                            <option className='text-gray-500' value="education">Education</option>
+                            <option className='text-gray-500' value="social service">Social Service</option>
+                            <option className='text-gray-500' value="animal welfare">Animal Welfare</option>
+                        </select>
+                    )}
                 </div>
 
                 {/* Location */}

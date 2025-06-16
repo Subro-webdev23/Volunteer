@@ -13,7 +13,7 @@ const AllPost = () => {
     const [isTableLayout, setIsTableLayout] = useState(false);
     const [searchText, setSearchText] = useState('');
     useEffect(() => {
-        fetch('http://localhost:3000/allPost')
+        fetch('https://assignment-11-server-nu-sage.vercel.app/allPost')
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

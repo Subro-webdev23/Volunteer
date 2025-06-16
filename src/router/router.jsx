@@ -56,11 +56,9 @@ export const router = createBrowserRouter([
                 </PrivateRoute>
             },
             {
-                path: '/update/:id',
-                loader: ({ params }) => fetch(`http://localhost:3000/allPost/${params.id}`),
-                element: <PrivateRoute>
-                    <Update></Update>
-                </PrivateRoute>
+                path: '/update/:email/:id',
+                element: <Update></Update>
+
             }
         ]
 

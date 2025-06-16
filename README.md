@@ -1,12 +1,26 @@
-# React + Vite
+<h1>#Volunteer Management Website</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+      <h2>Purpose</h2>
+      <ul>
+        <li>A User can Post here to If he find Volunteer</li>
+        <li>User can Be a Volenteer If he Want</li>
+        <li>User can Update her Own Post </li>
+        <li>User can Delete her Own Post </li>
+        <li>User can Cencle her Be a Volunteer </li>
 
-Currently, two official plugins are available:
+        <h3>Live Link : https://assignment-11-auth-cfa03.web.app/</h3>
+      </ul>
+      <h2>Key Features</h2>
+      <p>This Website has many of key features seach as Banner section, Volunteer Needs Now Section, Volunteer of the Month section, Add post route and others. This website user friendly and smooth!</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+      <h3>npm Packages</h3>
+      <ol>
+        <li>tailwindcss/vite</li>
+        <li>axios</li>
+        <li>firebase</li>
+        <li>framer-motion</li>
+        <li>react-helmet</li>
+        <li>react-icons</li>
+        <li>react-router</li>
+        <li>sweetalert2":</li>
+      </ol>

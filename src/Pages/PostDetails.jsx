@@ -9,17 +9,12 @@ const PostDetails = () => {
     const [postData, setPostData] = useState([])
     const { id } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:3000/allPost/${id}`)
+        fetch(`https://assignment-11-server-nu-sage.vercel.app/postDetails/${id}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setPostData(data)
             })
     }, [id])
-    // const [need, setNeed] = useState()
-    // console.log("iiii", id);
-    // const postData = useLoaderData();
-    //  loader: ({ params }) => `),
-
 
     // console.log(postData);
     const { user } = useAuth();
@@ -33,9 +28,7 @@ const PostDetails = () => {
         let requestData = Object.fromEntries(formData.entries());
         requestData.status = "requested";
 
-        axios.post('http://localhost:3000/volunteerReq', requestData, {
-            withCredentials: true
-        })
+        axios.post('https://assignment-11-server-nu-sage.vercel.app/volunteerReq', requestData)
             .then(response => {
                 // console.log('Request successfully', response.data);
                 Swal.fire({
@@ -46,19 +39,15 @@ const PostDetails = () => {
                     timer: 1500
                 });
 
-                axios.put(`http://localhost:3000/recruiterPost/update/${id}`, {}, {
-                    withCredentials: true
-                })
+                axios.put(`https://assignment-11-server-nu-sage.vercel.app/recruiterPost/update/${id}`)
                     .then(updateRes => {
                         console.log('Volunteers count updated:', updateRes.data);
-
-                        fetch(`http://localhost:3000/allPost/${id}`)
+                        // window.location.reload();
+                        fetch(`https://assignment-11-server-nu-sage.vercel.app/postDetails/${id}`, { credentials: 'include' })
                             .then(res => res.json())
                             .then(data => {
                                 setPostData(data)
                             })
-
-
                     })
 
                 document.getElementById("my_modal_5").close();
@@ -110,7 +99,7 @@ const PostDetails = () => {
                 </p>
             </div>
 
-            {/* ✅ Be a Volunteer Button */}
+            {/* Be a Volunteer Button */}
             <div className="mt-10 text-center">
                 <button onClick={() => document.getElementById('my_modal_5').showModal()} className={`py-3 px-6 rounded-lg transition duration-300 shadow-md font-semibold ${postData.volunteersNeeded === 0
                     ? 'bg-gray-400 cursor-not-allowed text-white'

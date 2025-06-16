@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
 
             if (currentUser?.email) {
-                axios.post('http://localhost:3000/jwt', { email: currentUser.email }, { withCredentials: true })
+                axios.post('https://assignment-11-server-nu-sage.vercel.app/jwt', { email: currentUser.email }, { withCredentials: true })
                     .then(res => console.log(res.data))
                     .catch(error => console.log(error))
             }
