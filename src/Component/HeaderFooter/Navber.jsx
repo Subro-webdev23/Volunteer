@@ -136,7 +136,7 @@ const Navber = () => {
 
                             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-36">
                                 <li>
-                                    <Link onClick={handleLogOut} className="text-red-500 hover:bg-red-100">
+                                    <Link onClick={handleLogOut} className="text-red-500 bg-gray-300 hover:bg-red-100">
                                         Log out
                                     </Link>
                                 </li>

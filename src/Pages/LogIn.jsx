@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
 import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
 
 const LogIn = () => {
     const { signInUser, setUser, signInGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -24,7 +26,7 @@ const LogIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate("/");
+                navigate(`${location.state ? location.state : "/"}`);
 
             })
             .catch(error => {
@@ -53,7 +55,7 @@ const LogIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate("/");
+                navigate(`${location.state ? location.state : "/"}`);
 
 
             })
@@ -69,7 +71,12 @@ const LogIn = () => {
             </Helmet>
             <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
-                <form className="space-y-4" onSubmit={handleSignIn}>
+                <motion.form
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
+                    className="space-y-4" onSubmit={handleSignIn}>
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                             Email
@@ -100,23 +107,33 @@ const LogIn = () => {
                     >
                         Login
                     </button>
-                </form>
+                </motion.form>
 
-                <div className="flex items-center justify-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
+                    className="flex items-center justify-center">
                     <button
                         onClick={handleGoogleLogIn}
                         className="flex items-center gap-2 px-4 py-2 border rounded-md hover:bg-gray-100"
                     >
                         <FcGoogle size={20} /> Login with Google
                     </button>
-                </div>
+                </motion.div>
 
-                <p className="text-sm text-center text-gray-600">
+                <motion.p
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
+                    className="text-sm text-center text-gray-600">
                     Don't have an account?{' '}
                     <Link to="/register" className="text-blue-600 hover:underline">
                         Register here
                     </Link>
-                </p>
+                </motion.p>
             </div>
         </div>
     );

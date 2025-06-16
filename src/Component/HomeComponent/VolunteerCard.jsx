@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { motion } from 'framer-motion';
 
 const VolunteerCard = ({ data }) => {
     const { _id, thumbnail, title, category, deadline } = data;
@@ -9,7 +10,14 @@ const VolunteerCard = ({ data }) => {
         year: 'numeric',
     });
     return (
-        <div className="rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition duration-300 max-w-sm">
+        <motion.div
+
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+
+            className="rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition duration-300 max-w-sm">
             <img src={thumbnail} alt={title} className="w-full h-48 object-cover" />
             <div className="p-4">
                 <span className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-wide">
@@ -23,7 +31,7 @@ const VolunteerCard = ({ data }) => {
                     View Details
                 </Link>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

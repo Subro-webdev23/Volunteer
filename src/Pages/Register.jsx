@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
 
 const Register = () => {
     const [error, setError] = useState("");
@@ -104,9 +105,19 @@ const Register = () => {
             <Helmet>
                 <title>Register</title>
             </Helmet>
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                viewport={{ once: true }}
+                className="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-xl">
                 <h2 className="text-2xl font-bold text-center text-gray-800">Register</h2>
-                <form className="space-y-4" onSubmit={handleRegister}>
+                <motion.form
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+                    viewport={{ once: true }}
+                    className="space-y-4" onSubmit={handleRegister}>
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                             Name
@@ -163,7 +174,7 @@ const Register = () => {
                     >
                         Register
                     </button>
-                </form>
+                </motion.form>
 
                 <p className="text-sm text-center text-gray-600">
                     Already have an account?{' '}
@@ -178,7 +189,7 @@ const Register = () => {
                         Login with Google
                     </button>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

@@ -201,13 +201,7 @@ const PostDetails = () => {
                                 placeholder="Write your suggestion here..."
                             ></textarea>
 
-                            {/* Status (default = requested) */}
-                            {/* <input
-                                type="text"
-                                className="input input-bordered w-full"
-                                value="requested"
-                                readOnly
-                            /> */}
+
 
                             {/* Buttons */}
                             <button className="w-full py-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700" type='submit'>Request</button>

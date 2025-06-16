@@ -5,10 +5,12 @@ import { AuthContext } from '../../Context/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
 
 const AddPost = () => {
     const { user } = useContext(AuthContext)
     const [selectedDate, setSelectedDate] = useState(new Date());
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -36,7 +38,14 @@ const AddPost = () => {
 
     };
     return (
-        <div className="max-w-xl mx-auto p-6 shadow-2xl rounded-2xl">
+        <motion.div
+            className="max-w-xl mx-auto p-6 shadow-2xl rounded-2xl"
+
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+        >
             <Helmet>
                 <title>Add Post</title>
             </Helmet>
@@ -155,7 +164,7 @@ const AddPost = () => {
                     Add Post
                 </button>
             </form>
-        </div>
+        </motion.div>
     );
 };
 
