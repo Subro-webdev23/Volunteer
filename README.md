@@ -12,7 +12,7 @@ This website is designed to streamline volunteer coordination and community supp
 
 ## Live Link
 
-[Visit the Website](https://assignment-11-auth-cfa03.web.app/)
+[Click here](https://assignment-11-auth-cfa03.web.app/)
 
 ## Key Features
 
