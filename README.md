@@ -32,7 +32,7 @@ This website includes several important and user-friendly sections:
 - `framer-motion`
 - `react-helmet`
 - `react-icons`
-- `react-router-dom`
+- `react-router
 - `sweetalert2`
 
 
