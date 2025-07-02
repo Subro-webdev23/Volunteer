@@ -24,12 +24,6 @@ const Footer = () => {
                 <Link to={'https://x.com/Subrota0157'} className="link link-hover">Twetter</Link>
                 <Link to={'https://www.youtube.com/'} className="link link-hover">YouTube</Link>
             </nav>
-            <nav>
-                <h6 className="footer-title">Legal</h6>
-                <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-
-            </nav>
         </footer>
     );
 };
