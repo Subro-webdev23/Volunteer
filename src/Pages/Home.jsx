@@ -6,6 +6,7 @@ import VolunteerCard from '../Component/HomeComponent/VolunteerCard';
 import { Link } from 'react-router';
 import { FaTrophy } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import PartnersSponsors from '../Component/HomeComponent/PartnersSponsors';
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
@@ -146,6 +147,12 @@ const Home = () => {
                             </p>
                         </motion.div>
                     </div>
+                </div>
+                <div className='py-20'>
+
+                    <h2 className='text-4xl font-bold'>Partners & Sponsors</h2>
+                    <PartnersSponsors />
+
                 </div>
 
             </section>
